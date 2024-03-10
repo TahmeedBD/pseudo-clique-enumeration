@@ -19,6 +19,7 @@
 #include"alist.c"
 #include"sgraph.c"
 #include"problem.c"
+#include<time.h>
 
 // int PCE_connected=1;
 void PCE_error (){
@@ -303,10 +304,21 @@ if ( ERROR_MES ) return (1);
 #ifndef _NO_MAIN_
 #define _NO_MAIN_
 int main (int argc, char *argv[]){
-  return (PCE_main (argc, argv));
+
+  clock_t start = clock() ;
+
+  int result = (PCE_main (argc, argv));
+
+  clock_t end = clock();
+
+  double time_spent = (double)(end-start)/CLOCKS_PER_SEC;
+
+  printf("Execution time is %f\n seconds", time_spent);
+
+  return result;
+
 }
 #endif
 /*******************************************************************************/
 
 #endif
-
