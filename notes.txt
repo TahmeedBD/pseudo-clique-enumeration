@@ -1,0 +1,13 @@
+gcc -O3 -Os -s -o pce pce.c -lm
+
+./pce C -l 5 -u 7 test.grh 0.9 clq.out
+
+gcc -pg -O3 -Os -o pce pce.c -lm
+
+./pce C -l 5 -u 7 g100.grh 0.9 clq.out
+
+python3 -u "/code/CSE491-Advanced-Graph-Theory/tests/run_tests.py"
+
+./pce C -l 5 tests/test1.grh 0.5 clq.out
+
+gprof pce gmon.out > analysis.txt
